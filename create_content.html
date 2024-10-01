@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content</title>
+
+    <style>
+        .displayContainer {
+            border:thin solid black;
+            width:50%;
+            margin-left:20px;
+            padding:10px;
+        }
+
+        #complaintsContainer, #technicalProblemsContainer, #productIssueContainer {
+            display: none;
+        }
+    </style>
+
+    <script>
+        const dropdown = document.createElement('select');
+        
+        const defaultOption = document.createElement('option');
+        defaultOption.textContent = 'Select an option';
+        defaultOption.value = '';
+        dropdown.appendChild(defaultOption);
+        
+        const option1 = document.createElement('option');
+        option1.textContent = 'Option 1';
+        option1.value = '1';
+        dropdown.appendChild(option1);
+        
+        const option2 = document.createElement('option');
+        option2.textContent = 'Option 2';
+        option2.value = '2';
+        dropdown.appendChild(option2);
+        
+        const option3 = document.createElement('option');
+        option3.textContent = 'Option 3';
+        option3.value = '3';
+        dropdown.appendChild(option3);
+    
+        document.body.appendChild(dropdown);
+    
+        const radioContainer = document.createElement('div');
+        
+        function addRadioButton(name, value, labelText) {
+            const container = document.createElement('div');
+            
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = name;
+            radio.value = value;
+            
+            const label = document.createElement('label');
+            label.textContent = labelText;
+            label.appendChild(radio);
+            
+            container.appendChild(label);
+            return container;
+        }
+        
+        radioContainer.appendChild(addRadioButton('group1', '1', 'Radio 1'));
+        radioContainer.appendChild(addRadioButton('group1', '2', 'Radio 2'));
+        radioContainer.appendChild(addRadioButton('group1', '3', 'Radio 3'));
+        
+        document.body.appendChild(radioContainer);
+    </script>
+</head>
+
+<body onload="pageSetup()">
+    <h1>WDV321 Advanced Javascript</h1>
+    <h2>Dynamic Structure -  Display Property Exercise</h2>
+    <p>Use this page as the basis for your assignment. You are welcome to change the content, layout and style of this page as desired. </p>
+
+        <h4>Customer Service Complaints:</h4>
+        <p>
+            <label>Reason For Contact:
+            <select name="contactType" id="contactType" onchange="showContainer()">
+                <option value="">Select Reason</option>
+                <option value="C">Complaints</option>
+                <option value="T">Technical Problems</option>
+                <option value="P">Product Issues</option>
+            </select>
+            </label>
+        </p>
+
+    <section class="displayContainer">
+        <div id="complaintsContainer">
+            <label>Reason For Complaint:
+                <select name="complaintsType" id="complaintsType">
+                    <option value="">Select Reason</option>
+                    <option value="C">Poor Customer Service</option>
+                    <option value="Q">Product Quality</option>
+                    <option value="D">Delivery Issue</option>
+                    <option value="R">Refund Issue</option>
+                </select>
+            </label>
+        </div>
+
+        <div id="technicalProblemsContainer">
+            <label>Reason For Technical Problem: <br>
+                <input type="checkbox"
+                    id="checkbox1"
+                    name="technical-problem"
+                    value="integration">
+                <label for="checkbox1">Integration Issue</label><br>
+
+                <input type="checkbox"
+                id="checkbox2"
+                name="technical-problem"
+                value="bluetooth">
+                <label for="checkbox2">Bluetooth Connectivity Problem</label><br>
+
+                <input type="checkbox"
+                id="checkbox3"
+                name="technical-problem"
+                value="loading">
+                <label for="checkbox3">Slow Loading Times</label><br>
+
+                <input type="checkbox"
+                id="checkbox4"
+                name="technical-problem"
+                value="support">
+                <label for="checkbox4">Insufficient 24/7 Support</label>
+            </label>
+        </div>
+
+        <div id="productIssueContainer">
+            <label>Reason For Product Issue: <br>
+                <input type="radio"
+                    id="radio1"
+                    name="product-issue"
+                    value="defective">
+                <label for="radio1">Defective Product</label><br>
+
+                <input type="radio"
+                    id="radio2"
+                    name="product-issue"
+                    value="missing">
+                <label for="radio2">Missing Parts</label><br>
+
+                <input type="radio"
+                    id="radio3"
+                    name="product-issue"
+                    value="wrong">
+                <label for="radio3">Wrong Product Shipped</label><br>
+
+                <input type="radio"
+                    id="radio4"
+                    name="product-issue"
+                    value="damaged">
+                <label for="radio4">Product Damaged During Shipping</label>
+            </label>
+        </div>
+    </section>
+    <p> </p>
+    <p>&nbsp;</p>
+
+</body>
+</html>
